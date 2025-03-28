@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.pdrdemo.MainActivity">
+
+    <TextView
+        android:id="@+id/tv_ukf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_kf"
+        android:gravity="center"
+        android:text="EKF角度[度]："
+        app:layout_constraintStart_toStartOf="@+id/tv_kf"
+        app:layout_constraintTop_toBottomOf="@+id/tv_kf" />
+
+
+    <TextView
+        android:id="@+id/tv_kf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="KF角度[度]：" />
+
+
+    <TextView
+        android:id="@+id/tv_pdr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_ukf"
+        android:gravity="center"
+        android:text="步长[米]："
+        app:layout_constraintStart_toStartOf="@+id/tv_ukf"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ukf" />
+
+
+    <TextView
+        android:id="@+id/tv_x"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btn_start"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:text="X坐标[米]：" />
+
+    <TextView
+        android:id="@+id/tv_y"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_x"
+        android:gravity="center"
+        android:text="Y坐标[米]：" />
+
+    <TextView
+        android:id="@+id/tv_z"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_y"
+        android:gravity="center"
+        android:text="Z坐标[米]：" />
+    <TextView
+        android:id="@+id/tv_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_pres"
+        android:gravity="center"
+        android:text="手机模式："
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toStartOf="@+id/tv_y"
+        app:layout_constraintTop_toBottomOf="@+id/tv_y" />
+    <TextView
+        android:id="@+id/tv_pres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_z"
+        android:gravity="center"
+        android:text="气压[hPa]："
+        app:layout_constraintStart_toStartOf="@+id/tv_y"
+        app:layout_constraintTop_toBottomOf="@+id/tv_y" />
+    <TextView
+        android:id="@+id/tv_AccVar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_pres"
+        android:gravity="center"
+        android:text="加速度方差："
+
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/tv_y"
+        app:layout_constraintTop_toBottomOf="@+id/tv_y" />
+    <TextView
+        android:id="@+id/tv_NormalAngle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_mode"
+        android:gravity="center"
+        android:text="常规角度："
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/tv_mode"
+        app:layout_constraintTop_toBottomOf="@+id/tv_mode" />
+
+    <TextView
+        android:id="@+id/tv_step"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tv_y"
+        android:layout_marginEnd="142dp"
+        android:gravity="center"
+        android:text="步数：" />
+    <TextView
+        android:id="@+id/tv_floor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tv_step"
+        android:layout_marginEnd="142dp"
+        android:gravity="center"
+        android:text="楼层：" />
+
+    <Button
+        android:id="@+id/btn_Init"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:onClick="InitModel"
+        android:text="Init"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tv_ukf"
+        android:layout_gravity="right"
+        android:onClick="StartModel"
+        android:text="Start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/btn_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tv_x"
+        android:layout_gravity="right"
+        android:onClick="StopModel"
+        android:text="Stop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_destroy"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/btn_stop"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="right"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="-1dp"
+        android:onClick="DestroyModel"
+        android:text="destroy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_start" />
+
+    <Button
+        android:id="@+id/btn_Save"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tv_pres"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="right"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="227dp"
+        android:onClick="SaveModel"
+        android:text="保存数据"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_start" />
+
+    <Button
+        android:id="@+id/btn_Out"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tv_pres"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="right"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="123dp"
+        android:onClick="OutPutModel"
+        android:text="导出"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_start" />
+    <ImageView
+        android:id="@+id/iv_map"
+        android:layout_width="600dp"
+        android:layout_height="480dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</RelativeLayout>

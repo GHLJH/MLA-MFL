@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menuEKF"
+        android:orderInCategory="101"
+        app:showAsAction="never"
+        android:title="✔EKF" />
+    <item
+        android:id="@+id/menuKF"
+        android:orderInCategory="101"
+        app:showAsAction="never"
+        android:title="KF" />
+    <item
+        android:id="@+id/menuMLA"
+        android:orderInCategory="101"
+        app:showAsAction="never"
+        android:title="✔MLA" />
+    <item
+        android:id="@+id/menuFloor"
+        android:orderInCategory="101"
+        app:showAsAction="never"
+        android:title="✔4F" />
+</menu>
